@@ -7,11 +7,13 @@ invincible_png = image.load('invincible.png')
 
 invincible_png = transform.scale(invincible_png, (200, 200))
 
-invincible_font = font.Font("invinciblefont.TTF, 50")
+invincible_font = font.Font("invinciblefont.TTF", 50)
 
 texto = invincible_font.render("casa do invencível", True, (0, 0, 0))
 
-mixer.music.load()
+mixer.music.load("dav4d.mp3")
+
+mixer.music.play(-1)
 
 window = display.set_mode((1280, 720))
 
@@ -42,7 +44,7 @@ while True:
     if nuvem_x > 1300: 
 
         nuvem_x = -150 
-
+    window.fill((60, 182, 254))
 # Grama 
 
     draw.rect(window, (100, 150, 50), (0, 550, 1200, 170))
