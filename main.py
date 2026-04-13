@@ -75,10 +75,9 @@ while True:
 
     # Casa 
 
-    draw.rect(window, (105, 105, 105), (450, 350, 200, 200))
-
-    draw.polygon(window, (210, 105, 30), [(450, 350), (550, 200), (650, 350)]) 
-
+    draw.rect(window, (245, 245, 220), (450, 350, 200, 200))
+    draw.polygon(window, (60, 60, 60), [(450, 350), (550, 200), (650, 350)])
+    
     draw.rect(window, (139, 69, 19), (560, 430, 60, 120)) 
 
     draw.circle(window, (0, 0, 0), (610, 490), 5) 
