@@ -44,9 +44,6 @@ velocidade_nuvem = 3
 
 relogio = time.Clock()
 
-
-
-
 #programa para fazer o programa fechar com o X do windows
 
 modo_fundo = False
@@ -63,10 +60,11 @@ ccc = (ooo+(600//3.95))
 
 
 while running:
-    dt = clock.tick(60) / 1000
+    dt = clock.tick(60) / 1000 
     
     for ev in event.get():
         if ev.type == QUIT:
+            quit()
             running = False
             sys.exit()
         
@@ -108,17 +106,21 @@ while running:
     keys = key.get_pressed()
     mouse_keys = mouse.get_pressed()
 
+    keys = key.get_pressed()
+    mouse_keys = mouse.get_pressed()
+
     if raio_x < 1350:
         if keys[K_d] or mouse_keys[0]: 
             raio_x = raio_x + 300 * dt
     if raio_x > 10:
         if keys[K_a] or mouse_keys[2]: 
             raio_x = raio_x - 300 * dt
+                    
 
     # Movimento da nuvem
     nuvem_x += velocidade_nuvem
-    if nuvem_x > 1300: 
-        nuvem_x = -150 
+    if nuvem_x <= -300 or nuvem_x >= 1300: 
+        velocidade_nuvem = -velocidade_nuvem
 
     # --- DESENHOS ---
 
@@ -129,15 +131,18 @@ while running:
     draw.rect(window, (100, 150, 50), (0, 550, 1280, 170))
 
     # Sol
-    draw.circle(window, (255, 255, 0), (150, 150), 50)
-    draw.line(window, (255, 255, 0), (150, 80), (150, 50), 5)
-    draw.line(window, (255, 255, 0), (150, 220), (150, 250), 5)
-    draw.line(window, (255, 255, 0), (80, 150), (50, 150), 5)
-    draw.line(window, (255, 255, 0), (220, 150), (250, 150), 5)
-    draw.line(window, (255, 255, 0), (100, 100), (75, 75), 5)
-    draw.line(window, (255, 255, 0), (200, 200), (225, 225), 5)
-    draw.line(window, (255, 255, 0), (100, 200), (75, 225), 5)
-    draw.line(window, (255, 255, 0), (200, 100), (225, 75), 5)
+    mover_sol = (int(raio_x),150)
+
+
+    draw.circle(window, (255, 255, 0), (raio_x, 150), 50)
+    draw.line(window, (255, 255, 0), (raio_x, 80), (raio_x, 50), 5)
+    draw.line(window, (255, 255, 0), (raio_x, 220), (raio_x, 250), 5)
+    draw.line(window, (255, 255, 0), (raio_x-70, 150), (raio_x-100, 150), 5)
+    draw.line(window, (255, 255, 0), (raio_x + 70, 150), (raio_x + 100, 150), 5)
+    draw.line(window, (255, 255, 0), (raio_x - 50, 100), (raio_x - 75, 75), 5)
+    draw.line(window, (255, 255, 0), (raio_x + 50, 200), (raio_x + 75, 225), 5)
+    draw.line(window, (255, 255, 0), (raio_x - 50, 200), (raio_x - 75, 225), 5)
+    draw.line(window, (255, 255, 0), (raio_x + 50, 100), (raio_x + 75 , 75), 5)
 
     # Casa 
     draw.rect(window, (245, 245, 220), (450, 350, 200, 200))
