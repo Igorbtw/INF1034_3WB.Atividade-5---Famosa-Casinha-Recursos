@@ -63,7 +63,7 @@ ccc = (ooo+(600//3.95))
 
 
 while running:
-    dt = clock.tick(60) / 1000 # dt precisa estar dentro do loop
+    dt = clock.tick(60) / 1000
     
     for ev in event.get():
         if ev.type == QUIT:
@@ -74,7 +74,7 @@ while running:
             if ev.key == K_SPACE:
                 modo_fundo = not modo_fundo
 
-        # Lógica dos sons (botão do meio)
+        
         if ev.type == MOUSEBUTTONDOWN:
             if ev.button == 2:
                 if modo_fundo == True:
@@ -87,12 +87,12 @@ while running:
                     elif raio_x >= 860:
                         error.play()
 
-    # Lógica das cores (movida para dentro do loop para atualizar sempre)
+    # Lógica das cores 
     if modo_fundo:
         background_color = (245, 178, 64)
     else:
         if raio_x < 600:
-            # max e min garantem que a cor não quebre o pygame (0 a 255)
+            # max e min garantem que a cor não quebre o pygame 
             r = max(0, min(255, uuu - (raio_x // 5.75)))
             g = max(0, min(255, iii + (raio_x // 25)))
             b = max(0, min(255, ooo + (raio_x // 3.95)))
@@ -109,10 +109,10 @@ while running:
     mouse_keys = mouse.get_pressed()
 
     if raio_x < 1350:
-        if keys[K_d] or mouse_keys[0]: # D ou Clique Esquerdo
+        if keys[K_d] or mouse_keys[0]: 
             raio_x = raio_x + 300 * dt
     if raio_x > 10:
-        if keys[K_a] or mouse_keys[2]: # A ou Clique Direito
+        if keys[K_a] or mouse_keys[2]: 
             raio_x = raio_x - 300 * dt
 
     # Movimento da nuvem
