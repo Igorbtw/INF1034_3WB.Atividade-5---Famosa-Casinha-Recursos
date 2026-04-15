@@ -92,7 +92,7 @@ while running:
         background_color = (245, 178, 64)
     else:
         if raio_x < 600:
-            # max e min garantem que a cor não quebre o pygame 
+            
             r = max(0, min(255, uuu - (raio_x // 5.75)))
             g = max(0, min(255, iii + (raio_x // 25)))
             b = max(0, min(255, ooo + (raio_x // 3.95)))
