@@ -44,7 +44,7 @@ velocidade_nuvem = 3
 
 relogio = time.Clock()
 
-# window.fill removido daqui para rodar dentro do while
+
 
 
 #programa para fazer o programa fechar com o X do windows
